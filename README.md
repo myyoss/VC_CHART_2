@@ -1,0 +1,4 @@
+About
+UPLOAD TWO EXCEL TABLE - AUTO GENERATE COMPARISON CHART AS SVG FILE
+
+![Screenshot 2025-04-07 163738](https://github.com/user-attachments/assets/aa3400c1-3a17-4181-9551-c6700bc7b457)
