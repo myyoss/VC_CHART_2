@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="images/vaficon_videocitesCharts_1.svg" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="http://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title>VCharts+V2</title>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        font-weight: bold;
+        background-color: rgb(20, 8, 60);
+        max-width: 90%;
+        border: 1px, solid, gray;
+        border-radius: 4px;
+      }
+      .headerContainer {
+        margin-top: 20px;
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+          object-fit: cover;
+          width: 100px;
+          margin: 0px 0px 20px 0px;
+        }
+        .logoRight {
+          height: auto;
+          width: 100px;
+          /* background-color: #4caf50; */
+          padding: 0;
+          margin: 0;
+          img {
+            width: 50%;
+            height: 100%;
+            margin: auto;
+            display: block;
+          }
+        }
+      }
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .titleComtainer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 30px;
+        }
+        h4 {
+          color: azure;
+          padding: 0%;
+          margin: 0px 0px 20px 0px;
+          font-weight: 100;
+        }
+        h1 {
+          color: azure;
+          padding: 0%;
+          margin: 0;
+          font-weight: 100;
+        }
+        #inputForm {
+          button {
+            border-radius: 4px;
+            height: 40px;
+          }
+          .inputContainer {
+            display: flex;
+            flex-direction: row;
+            max-width: 1000px;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* border: 1px solid red; */
+          }
+        }
+        img {
+          object-fit: cover;
+          width: 100px;
+          margin: 0px 0px 20px 0px;
+        }
+      }
+      form {
+        margin-bottom: 20px;
+      }
+      ::placeholder {
+        color: rgb(255, 255, 255);
+      }
+      .input-field {
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 4px;
+        border: 1px, solid, white;
+      }
+      .input-fb {
+        background-color: #215f9a;
+      }
+      .input-tt {
+        background-color: #808080;
+      }
+      .input-tw {
+        background-color: #95b7d7;
+      }
+      .input-th {
+        background-color: #800080;
+      }
+      .input-vk {
+        background-color: #7b44c3;
+      }
+      .input-yt {
+        background-color: red;
+      }
+      .input-ok {
+        background-color: orange;
+      }
+      .input-ig {
+        background-color: rgb(212, 90, 196);
+      }
+      .input-vm {
+        background-color: #2a294b;
+      }
+      .input-dm {
+        background-color: #185065;
+      }
+      .buttons-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+        button {
+          padding: 0%;
+          margin: 0%;
+          width: 200px;
+          height: 40px;
+          border: none;
+          font-size: 16px;
+        }
+      }
+      .export-button,
+      .toggle-button,
+      .random-button,
+      .upload-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 4px;
+      }
+      .export-button:hover,
+      .toggle-button:hover,
+      .random-button:hover,
+      .upload-button:hover {
+        background-color: #45a049;
+      }
+      svg {
+        display: block;
+        margin-top: 20px;
+      }
+      #chartContainer,
+      #chartContainer2,
+      #combinedChartContainer {
+        border: 1px, solid, gray;
+        border-radius: 4px;
+        background-color: rgba(182, 214, 218, 0.2);
+      }
+      #inputForm2 {
+        button {
+          border-radius: 4px;
+          height: 40px;
+        }
+        .inputContainer {
+          display: flex;
+          flex-direction: row;
+          max-width: 1000px;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-top: 20px;
+          /* border: 1px solid red; */
+        }
+      }
+      .combinedChartWrapper {
+        border-top: 1px solid gray;
+        margin-top: 20px;
+        h2 {
+          color: azure;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="headerContainer">
+      <div class="logoLeft">
+        <img
+          src="/images/Videocites-Logo-Latest_Dark-BG-cropped.png"
+          alt=""
+          srcset=""
+        />
+      </div>
+      <div class="logoRight">
+        <img src="/images/vaficon5.png" alt="" srcset="" />
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="titleComtainer">
+        <h1 style="color: #4caf50">
+          <samp style="font-size: 40px; font-weight: bold; color: #800080"
+            >V</samp
+          >Charts
+        </h1>
+        <h4>TWO CHARTS COMBINED</h4>
+      </div>
+      <!-- First Form -->
+      <form id="inputForm">
+        <div class="inputContainer">
+          <input
+            type="number"
+            id="inputFB"
+            class="input-field input-fb"
+            placeholder="Value for FB"
+          />
+          <input
+            type="number"
+            id="inputTT"
+            class="input-field input-tt"
+            placeholder="Value for TT"
+          />
+          <input
+            type="number"
+            id="inputTW"
+            class="input-field input-tw"
+            placeholder="Value for TW"
+          />
+          <input
+            type="number"
+            id="inputTH"
+            class="input-field input-th"
+            placeholder="Value for TH"
+          />
+          <input
+            type="number"
+            id="inputVK"
+            class="input-field input-vk"
+            placeholder="Value for VK"
+          />
+          <input
+            type="number"
+            id="inputYT"
+            class="input-field input-yt"
+            placeholder="Value for YT"
+          />
+          <input
+            type="number"
+            id="inputOK"
+            class="input-field input-ok"
+            placeholder="Value for OK"
+          />
+          <input
+            type="number"
+            id="inputIG"
+            class="input-field input-ig"
+            placeholder="Value for IG"
+          />
+          <input
+            type="number"
+            id="inputVM"
+            class="input-field input-vm"
+            placeholder="Value for VM"
+          />
+          <input
+            type="number"
+            id="inputDM"
+            class="input-field input-dm"
+            placeholder="Value for DM"
+          />
+        </div>
+        <div class="buttons-container">
+          <button type="button" id="randomButton" class="random-button">
+            Generate Random Values
+          </button>
+          <button type="button" id="uploadButton" class="upload-button">
+            Upload Excel File
+          </button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div id="chartContainer" style="width: 700px; height: auto"></div>
+    <button id="exportButtonSVG" class="export-button" style="display: none">
+      Export Chart as SVG
+    </button>
+    <button id="percentageButton" class="toggle-button" style="display: none">
+      Convert to Percentage
+    </button>
+    <button id="originalButton" class="toggle-button" style="display: none">
+      Show Original Values
+    </button>
+
+    <!-- Second Form (Duplicated) -->
+    <form id="inputForm2">
+      <div class="inputContainer">
+        <input
+          type="number"
+          id="inputFB2"
+          class="input-field input-fb"
+          placeholder="Value for FB"
+        />
+        <input
+          type="number"
+          id="inputTT2"
+          class="input-field input-tt"
+          placeholder="Value for TT"
+        />
+        <input
+          type="number"
+          id="inputTW2"
+          class="input-field input-tw"
+          placeholder="Value for TW"
+        />
+        <input
+          type="number"
+          id="inputTH2"
+          class="input-field input-th"
+          placeholder="Value for TH"
+        />
+        <input
+          type="number"
+          id="inputVK2"
+          class="input-field input-vk"
+          placeholder="Value for VK"
+        />
+        <input
+          type="number"
+          id="inputYT2"
+          class="input-field input-yt"
+          placeholder="Value for YT"
+        />
+        <input
+          type="number"
+          id="inputOK2"
+          class="input-field input-ok"
+          placeholder="Value for OK"
+        />
+        <input
+          type="number"
+          id="inputIG2"
+          class="input-field input-ig"
+          placeholder="Value for IG"
+        />
+        <input
+          type="number"
+          id="inputVM2"
+          class="input-field input-vm"
+          placeholder="Value for VM"
+        />
+        <input
+          type="number"
+          id="inputDM2"
+          class="input-field input-dm"
+          placeholder="Value for DM"
+        />
+      </div>
+      <div class="buttons-container">
+        <button type="button" id="randomButton2" class="random-button">
+          Generate Random Values
+        </button>
+        <button type="button" id="uploadButton2" class="upload-button">
+          Upload Excel File
+        </button>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <div id="chartContainer2" style="width: 700px; height: auto"></div>
+    <button id="exportButtonSVG2" class="export-button" style="display: none">
+      Export Chart as SVG
+    </button>
+    <button id="percentageButton2" class="toggle-button" style="display: none">
+      Convert to Percentage
+    </button>
+    <button id="originalButton2" class="toggle-button" style="display: none">
+      Show Original Values
+    </button>
+
+    <!-- Third Combined Chart -->
+    <div class="combinedChartWrapper">
+      <h2>Combined Chart</h2>
+      <div id="combinedChartContainer" style="width: 700px; height: auto"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+      let originalValues = [];
+      let originalValues2 = [];
+
+      // Function to format large numbers into short format (K, M, B, T)// FIXED TO SHOW TWO NUMBERS AFTER DOT
+      function formatNumber(num) {
+        if (num >= 1e12) {
+          return (num / 1e12).toFixed(2) + "T";
+        } else if (num >= 1e9) {
+          return (num / 1e9).toFixed(2) + "B";
+        } else if (num >= 1e6) {
+          return (num / 1e6).toFixed(2) + "M";
+        } else if (num >= 1e3) {
+          return (num / 1e3).toFixed(2) + "K";
+        } else {
+          return num.toString();
+        }
+      }
+
+      function generateChart(
+        formId,
+        chartContainerId,
+        exportButtonId,
+        percentageButtonId,
+        originalButtonId,
+        randomButtonId,
+        uploadButtonId
+      ) {
+        const formSelector = formId === "2" ? "inputForm2" : "inputForm";
+
+        // Handle form submission
+        document
+          .getElementById(formSelector)
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            const container = document.getElementById(chartContainerId);
+            container.innerHTML = ""; // Clear existing chart
+
+            const inputs = [
+              {
+                value:
+                  parseInt(
+                    document.getElementById(
+                      "inputFB" + (formId === "2" ? "2" : "")
+                    ).value
+                  ) || 0,
+                name: "FB",
+                color: getBackgroundColor(
+                  "inputFB" + (formId === "2" ? "2" : "")
+                ),
+              },
+              {
+                value:
+                  parseInt(
+                    document.getElementById(
+                      "inputTT" + (formId === "2" ? "2" : "")
+                    ).value
+                  ) || 0,
+                name: "TT",
+                color: getBackgroundColor(
+                  "inputTT" + (formId === "2" ? "2" : "")
+                ),
+              },
+              {
+                value:
+                  parseInt(
+                    document.getElementById(
+                      "inputTW" + (formId === "2" ? "2" : "")
+                    ).value
+                  ) || 0,
+                name: "TW",
+                color: getBackgroundColor(
+                  "inputTW" + (formId === "2" ? "2" : "")
+                ),
+              },
+              {
+                value:
+                  parseInt(
+                    document.getElementById(
+                      "inputTH" + (formId === "2" ? "2" : "")
+                    ).value
+                  ) || 0,
+                name: "TH",
+                color: getBackgroundColor(
+                  "inputTH" + (formId === "2" ? "2" : "")
+                ),
+              },
+              {
+                value:
+                  parseInt(
+                    document.getElementById(
+                      "inputVK" + (formId === "2" ? "2" : "")
+                    ).value
+                  ) || 0,
+                name: "VK",
+                color: getBackgroundColor(
+                  "inputVK" + (formId === "2" ? "2" : "")
+                ),
+              },
+              {
+                value:
+                  parseInt(
+                    document.getElementById(
+                      "inputYT" + (formId === "2" ? "2" : "")
+                    ).value
+                  ) || 0,
+                name: "YT",
+                color: getBackgroundColor(
+                  "inputYT" + (formId === "2" ? "2" : "")
+                ),
+              },
+              {
+                value:
+                  parseInt(
+                    document.getElementById(
+                      "inputOK" + (formId === "2" ? "2" : "")
+                    ).value
+                  ) || 0,
+                name: "OK",
+                color: getBackgroundColor(
+                  "inputOK" + (formId === "2" ? "2" : "")
+                ),
+              },
+              {
+                value:
+                  parseInt(
+                    document.getElementById(
+                      "inputIG" + (formId === "2" ? "2" : "")
+                    ).value
+                  ) || 0,
+                name: "IG",
+                color: getBackgroundColor(
+                  "inputIG" + (formId === "2" ? "2" : "")
+                ),
+              },
+              {
+                value:
+                  parseInt(
+                    document.getElementById(
+                      "inputVM" + (formId === "2" ? "2" : "")
+                    ).value
+                  ) || 0,
+                name: "VM",
+                color: getBackgroundColor(
+                  "inputVM" + (formId === "2" ? "2" : "")
+                ),
+              },
+              {
+                value:
+                  parseInt(
+                    document.getElementById(
+                      "inputDM" + (formId === "2" ? "2" : "")
+                    ).value
+                  ) || 0,
+                name: "DM",
+                color: getBackgroundColor(
+                  "inputDM" + (formId === "2" ? "2" : "")
+                ),
+              },
+            ].filter((input) => input.value > 0);
+
+            if (inputs.length === 0) return;
+
+            if (formId === "2") {
+              originalValues2 = [...inputs];
+            } else {
+              originalValues = [...inputs];
+            }
+            //retrieve the background color from the input css color
+            function getBackgroundColor(elementId) {
+              const element = document.getElementById(elementId);
+              if (element) {
+                // Use getComputedStyle to retrieve the background color
+                return window.getComputedStyle(element).backgroundColor;
+              }
+              return "transparent"; // Default if the element doesn't exist
+            }
+
+            const maxValue = Math.max(...inputs.map((input) => input.value));
+            const barHeight = 30;
+            const gap = 10;
+            const margin = 10; // Margin of 10px inside the chart container
+            const chartHeight =
+              inputs.length * (barHeight + gap) - gap + 2 * margin; // Added margin to the chart height
+
+            const svg = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "svg"
+            );
+            svg.setAttribute("width", "700");
+            svg.setAttribute("height", chartHeight);
+            svg.setAttribute("viewBox", `0 0 500 ${chartHeight}`);
+            svg.setAttribute("style", "margin: 0; padding: 0;");
+
+            const chartGroup = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "g"
+            );
+            chartGroup.setAttribute(
+              "transform",
+              `translate(${margin}, ${margin})`
+            );
+            svg.appendChild(chartGroup);
+
+            inputs.forEach((input, index) => {
+              const barWidth = (input.value / maxValue) * (500 - 2 * margin);
+              const y = index * (barHeight + gap);
+
+              const rect = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect"
+              );
+              rect.setAttribute("x", "0");
+              rect.setAttribute("y", y);
+              rect.setAttribute("width", barWidth);
+              rect.setAttribute("height", barHeight);
+              rect.setAttribute("fill", input.color);
+              rect.setAttribute("rx", "4");
+              rect.setAttribute("ry", "4");
+              chartGroup.appendChild(rect);
+
+              // Display the name 10px left of the bar
+              const nameText = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text"
+              );
+              nameText.setAttribute("x", "-10");
+              nameText.setAttribute("y", y + barHeight / 2 + 5);
+              nameText.setAttribute("fill", input.color);
+              nameText.setAttribute("text-anchor", "end");
+              nameText.textContent = input.name;
+              chartGroup.appendChild(nameText);
+
+              // Display the formatted value 10px outside the bar
+              const valueText = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text"
+              );
+              valueText.setAttribute("x", barWidth + 10);
+              valueText.setAttribute("y", y + barHeight / 2 + 5);
+              valueText.setAttribute("fill", "white");
+              valueText.textContent = formatNumber(input.value);
+              chartGroup.appendChild(valueText);
+            });
+
+            container.appendChild(svg);
+
+            document.getElementById(exportButtonId).style.display = "block";
+            document.getElementById(percentageButtonId).style.display = "block";
+            document.getElementById(originalButtonId).style.display = "block";
+
+            // Check if both forms are submitted
+            if (originalValues.length > 0 && originalValues2.length > 0) {
+              generateCombinedChart();
+            }
+          });
+
+        // Random Button Logic
+        document
+          .getElementById(randomButtonId)
+          .addEventListener("click", function () {
+            const inputs = document.querySelectorAll(`#${formSelector} input`);
+            inputs.forEach((input) => {
+              input.value = Math.floor(Math.random() * 100000000) + 1;
+            });
+          });
+
+        // Upload Excel Button Logic
+        document
+          .getElementById(uploadButtonId)
+          .addEventListener("click", function () {
+            const input = document.createElement("input");
+            input.type = "file";
+            input.accept = ".xlsx";
+            input.addEventListener("change", function (event) {
+              const file = event.target.files[0];
+              const reader = new FileReader();
+
+              reader.onload = function (e) {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: "array" });
+                const firstSheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[firstSheetName];
+                const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+                rows.forEach((row) => {
+                  if (row.length >= 2) {
+                    const [name, value] = row;
+                    const inputField = document.getElementById(
+                      `input${name}` + (formId === "2" ? "2" : "")
+                    );
+                    if (inputField) {
+                      inputField.value = value;
+                    }
+                  }
+                });
+
+                document
+                  .getElementById(formSelector)
+                  .dispatchEvent(new Event("submit"));
+              };
+
+              reader.readAsArrayBuffer(file);
+            });
+
+            input.click();
+          });
+
+        // Percentage Button Logic
+        document
+          .getElementById(percentageButtonId)
+          .addEventListener("click", function () {
+            const totalValue = (
+              formId === "2" ? originalValues2 : originalValues
+            ).reduce((sum, input) => sum + input.value, 0);
+            const texts = document.querySelectorAll(
+              `#${chartContainerId} svg text:nth-child(3n)`
+            );
+            texts.forEach((text, index) => {
+              const percentage =
+                (
+                  ((formId === "2"
+                    ? originalValues2[index].value
+                    : originalValues[index].value) /
+                    totalValue) *
+                  100
+                ).toFixed(1) + "%";
+              text.textContent = percentage;
+            });
+          });
+
+        // Original Button Logic
+        document
+          .getElementById(originalButtonId)
+          .addEventListener("click", function () {
+            const texts = document.querySelectorAll(
+              `#${chartContainerId} svg text:nth-child(3n)`
+            );
+            texts.forEach((text, index) => {
+              text.textContent = formatNumber(
+                formId === "2"
+                  ? originalValues2[index].value
+                  : originalValues[index].value
+              );
+            });
+          });
+      }
+
+      // Function to generate the combined chart
+      function generateCombinedChart() {
+        const container = document.getElementById("combinedChartContainer");
+        container.innerHTML = ""; // Clear existing chart
+
+        const combinedInputs = [];
+
+        originalValues.forEach((input, index) => {
+          combinedInputs.push(input);
+          if (originalValues2[index]) {
+            combinedInputs.push(originalValues2[index]);
+          }
+        });
+
+        const maxValue = Math.max(
+          ...combinedInputs.map((input) => input.value)
+        );
+        const barHeight = 30;
+        const gap = 10;
+        const margin = 10;
+        const chartHeight =
+          combinedInputs.length * (barHeight + gap) - gap + 2 * margin;
+
+        const svg = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        svg.setAttribute("width", "700");
+        svg.setAttribute("height", chartHeight);
+        svg.setAttribute("viewBox", `0 0 500 ${chartHeight}`);
+        svg.setAttribute("style", "margin: 0; padding: 0;");
+
+        const chartGroup = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "g"
+        );
+        chartGroup.setAttribute("transform", `translate(${margin}, ${margin})`);
+        svg.appendChild(chartGroup);
+
+        combinedInputs.forEach((input, index) => {
+          const barWidth = (input.value / maxValue) * (500 - 2 * margin);
+          const y = index * (barHeight + gap);
+
+          const rect = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "rect"
+          );
+          rect.setAttribute("x", "0");
+          rect.setAttribute("y", y);
+          rect.setAttribute("width", barWidth);
+          rect.setAttribute("height", barHeight);
+          rect.setAttribute("fill", input.color);
+          rect.setAttribute("rx", "4");
+          rect.setAttribute("ry", "4");
+          chartGroup.appendChild(rect);
+
+          // Display the name
+          const nameText = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+          );
+          nameText.setAttribute("x", "-10");
+          nameText.setAttribute("y", y + barHeight / 2 + 5);
+          nameText.setAttribute("fill", input.color);
+          nameText.setAttribute("text-anchor", "end");
+          nameText.textContent = input.name;
+          chartGroup.appendChild(nameText);
+
+          // Display the formatted value
+          const valueText = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+          );
+          valueText.setAttribute("x", barWidth + 10);
+          valueText.setAttribute("y", y + barHeight / 2 + 5);
+          valueText.setAttribute("fill", "black");
+          valueText.textContent = formatNumber(input.value);
+          chartGroup.appendChild(valueText);
+        });
+
+        container.appendChild(svg);
+      }
+
+      // Initialize charts
+      generateChart(
+        "1",
+        "chartContainer",
+        "exportButtonSVG",
+        "percentageButton",
+        "originalButton",
+        "randomButton",
+        "uploadButton"
+      );
+      generateChart(
+        "2",
+        "chartContainer2",
+        "exportButtonSVG2",
+        "percentageButton2",
+        "originalButton2",
+        "randomButton2",
+        "uploadButton2"
+      );
+      // Function to trigger download of SVG chart
+      function downloadSVG(svg, fileName = "chart.svg") {
+        const serializer = new XMLSerializer();
+        const svgString = serializer.serializeToString(svg);
+        const blob = new Blob([svgString], { type: "image/svg+xml" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+      }
+
+      // Function to generate the combined chart
+      function generateCombinedChart() {
+        const container = document.getElementById("combinedChartContainer");
+        container.innerHTML = ""; // Clear existing chart
+
+        const combinedInputs = [];
+
+        originalValues.forEach((input, index) => {
+          combinedInputs.push(input);
+          if (originalValues2[index]) {
+            combinedInputs.push(originalValues2[index]);
+          }
+        });
+
+        const maxValue = Math.max(
+          ...combinedInputs.map((input) => input.value)
+        );
+        const barHeight = 30;
+        const gap = 10;
+        const margin = 10;
+        const chartHeight =
+          combinedInputs.length * (barHeight + gap) - gap + 2 * margin;
+
+        const svg = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        svg.setAttribute("width", "700");
+        svg.setAttribute("height", chartHeight);
+        svg.setAttribute("viewBox", `0 0 500 ${chartHeight}`);
+        svg.setAttribute("style", "margin: 0; padding: 0;");
+
+        const chartGroup = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "g"
+        );
+        chartGroup.setAttribute("transform", `translate(${margin}, ${margin})`);
+        svg.appendChild(chartGroup);
+
+        combinedInputs.forEach((input, index) => {
+          let calculatedWidth = (input.value / maxValue) * (500 - 2 * margin);
+          const barWidth = Math.max(calculatedWidth, 2);
+          // const barWidth = (input.value / maxValue) * (500 - 2 * margin);
+          const y = index * (barHeight + gap);
+
+          const rect = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "rect"
+          );
+          rect.setAttribute("x", "0");
+          rect.setAttribute("y", y);
+          rect.setAttribute("width", barWidth);
+          rect.setAttribute("height", barHeight);
+          rect.setAttribute("fill", input.color);
+          rect.setAttribute("rx", "4");
+          rect.setAttribute("ry", "4");
+          chartGroup.appendChild(rect);
+
+          // Display the name
+          const nameText = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+          );
+          nameText.setAttribute("x", "-40");
+          nameText.setAttribute("y", y + barHeight / 2 + 5);
+          nameText.setAttribute("fill", input.color);
+          nameText.setAttribute("text-anchor", "end");
+          nameText.textContent = input.name;
+          chartGroup.appendChild(nameText);
+
+          // Display the year
+          const nameText1 = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+          );
+          nameText1.setAttribute("x", "-10");
+          nameText1.setAttribute("y", y + barHeight / 2 + 5);
+          nameText1.setAttribute("fill", "white");
+          nameText1.setAttribute("text-anchor", "end");
+          nameText1.textContent = "23";
+          chartGroup.appendChild(nameText1);
+
+          // Display the formatted value
+          const valueText = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+          );
+          valueText.setAttribute("x", barWidth + 10);
+          valueText.setAttribute("y", y + barHeight / 2 + 5);
+          valueText.setAttribute("fill", "white");
+          valueText.textContent = formatNumber(input.value);
+          chartGroup.appendChild(valueText);
+        });
+
+        container.appendChild(svg);
+        // Add font style to the SVG
+        const style = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "style"
+        );
+        style.textContent = `@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); 
+                      svg { font-family: 'Roboto', sans-serif; font-weight: bold; }`;
+        svg.insertBefore(style, svg.firstChild);
+        // Automatically save the combined chart as an SVG file
+        downloadSVG(svg, "combined_chart.svg");
+      }
+    </script>
+  </body>
+</html>
